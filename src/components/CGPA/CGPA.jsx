@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState, useRef } from 'react';
 import { useResult } from '../../Context/ResultContext';
 import html2canvas from "html2canvas";
-import './CGPA.css'; // 👈 ADD THIS IMPORT LINE
+import './CGPA.css'; 
 
 function CGPA() {
 
@@ -17,6 +17,7 @@ function CGPA() {
     const [batchLength, setBatchLength] = useState()
     const [yearLength, setYearLength] = useState()
     const cardRef = useRef(null); //! screenshot
+    
 
     //!This useEffect waits for the API data to arrive.
     //it only runs when the result has the data (result.length>0)
@@ -136,8 +137,7 @@ function CGPA() {
         }
     };
 
-    console.log(batchLength);
-    console.log(yearLength);
+   
     
     return (
         <div className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-gray-800 text-green-400 p-4 sm:p-6">

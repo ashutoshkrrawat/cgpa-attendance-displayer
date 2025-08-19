@@ -1,4 +1,3 @@
-// ResultContext.jsx
 import { createContext, useContext, useState, useEffect } from "react";
 
 const ResultContext = createContext();
@@ -8,18 +7,14 @@ export const ResultProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const proxyUrl = "https://api.allorigins.win/get?url=" +
-      encodeURIComponent("https://cgpa-server.vercel.app/api/v1/getResults");
-
-    fetch(proxyUrl)
-      .then(res => res.json())
-      .then(data => {
-        const parsed = JSON.parse(data.contents);
-        //console.log("Fetched results:", parsed);
-        setResult(parsed);
+    // Call our proxy endpoint on Vercel
+    fetch("/api/proxy")
+      .then((res) => res.json())
+      .then((data) => {
+        setResult(data);
         setLoading(false);
       })
-      .catch(err => {
+      .catch((err) => {
         console.error("Error fetching data:", err);
         setLoading(false);
       });
@@ -32,5 +27,4 @@ export const ResultProvider = ({ children }) => {
   );
 };
 
-// Hook to use context
 export const useResult = () => useContext(ResultContext);

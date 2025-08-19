@@ -12,9 +12,9 @@ export default function App() {
     
       <Routes>
         <Route path="/"  element={<Layout />}>
-          <Route path="attendance" element={<Attendance />} /> {/* Default page */}
+          <Route index element={<CGPA />} />
+          <Route path="attendance" element={<Attendance />} /> 
           
-          <Route path="cgpa" element={<CGPA />} />
         </Route>
       </Routes>
     
